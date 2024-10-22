@@ -1,5 +1,3 @@
-// Produto
-
 const Produto = require('../models/produto');
 
 exports.criarProduto = async (req, res) => {
@@ -35,9 +33,9 @@ exports.excluirProduto = async (req, res) => {
          const { nome } = req.body;
          const [updated] = await Produto.update({ nome }, { where: { id }});
 
-         if (update) {
-             const produtoAtualizado = await Produto.findByPk(id);
-             res.status(200).json(ProductAtualizado);
+         if (updated) {
+             const productAtualizado = await Produto.findByPk(id);
+             res.status(200).json(productAtualizado);
          } else {
              res.status(404).json({ error: 'Produto não encontrado'});
          }
@@ -48,7 +46,7 @@ exports.excluirProduto = async (req, res) => {
 
  exports.todosProdutos = async (req, res) => {
     try {
-        const products = await Product.findAll();
+        const products = await Produto.findAll();
         res.status(200).json(products);
     } catch (error) {
         res.status(500).json({ error: 'Erro ao buscar produtos'});

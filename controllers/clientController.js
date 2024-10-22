@@ -10,6 +10,15 @@ exports.criarCliente = async (req, res) => {
     }
 };
 
+exports.todosClientes = async (req, res) => {
+    try {
+        const clientes = await Cliente.findAll();
+        res.status(200).json(clientes);
+    } catch (error) {
+        res.status(500).json({ error: 'Erro ao buscar clientes'});
+    }
+ };
+
 // exports.excluirCliente = async (req, res) => {
 //     try {
 //         const { cliente_id } = req.params;
@@ -44,11 +53,3 @@ exports.criarCliente = async (req, res) => {
 //      }
 //  };
 
-//  exports.todosClientes = async (req, res) => {
-//     try {
-//         const clientes = await Cliente.findAll();
-//         res.status(200).json(clientes);
-//     } catch (error) {
-//         res.status(500).json({ error: 'Erro ao buscar clientes'});
-//     }
-//  };

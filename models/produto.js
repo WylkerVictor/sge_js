@@ -1,31 +1,20 @@
-// const { DataTypes } = require('sequelize');
-// const sequelize = require('../config/database');
+const { DataTypes } = require('sequelize');
+const sequelize = require('../config/database');
+const Detalhepedidos = require('./detalhepedidos');
 
-// const Produto = sequelize.define('Produto', {
-//     id: {
-//         type: DataTypes.INTEGER,
-    //     primaryKey: true,
-    //     autoIncrement: true,
-    // },
-    // nome: {
-    //     type: DataTypes.STRING,
-    //     allowNull: false,
-    // },
+const Produto = sequelize.define('Produto', {
+    id: {
+        type: DataTypes.INTEGER,
+        primaryKey: true,
+        autoIncrement: true,
+    },
+    nome: {
+        type: DataTypes.STRING,
+        allowNull: false,
+    },
 
-    // cliente_id: {
-    //     type: DataTypes.INTEGER,
-    //     references: {
-    //         model: 'clientes',
-    //         key: 'cliente_id'
-    //     },
-    //     allowNull: false,
-    // }
-// });
+});
 
-// Produto.associate = (models) => {
-//     Produto.belongsTo(models.Cliente,
-//       { foreignKey: 'cliente_id', as: 'cliente' });
-//   };
+Produto.hasMany(Detalhepedidos, { foreignKey: 'produto_id' });
 
-
-// module.exports = Produto;
+module.exports = Produto;

@@ -3,7 +3,7 @@ const router = express.Router();
 const pedidoController = require('../controllers/pedidoController');
 
 router.post('/pedidos', pedidoController.criarPedido);
-//router.get('/pedidos', pedidoController.todosPedidos);
+router.get('/pedidos', pedidoController.todosPedidos);
 
 
 module.exports = router;
