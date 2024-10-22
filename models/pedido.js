@@ -1,5 +1,6 @@
 const { DataTypes } = require('sequelize');
 const sequelize = require('../config/database');
+const Cliente = require('./cliente')
 
 const Pedido = sequelize.define('Pedido', {
     pedido_id: {
@@ -7,7 +8,6 @@ const Pedido = sequelize.define('Pedido', {
         primaryKey: true,
         autoIncrement: true,
     },
-
     cliente_id: {
         type: DataTypes.INTEGER,
         references: {   
@@ -17,13 +17,8 @@ const Pedido = sequelize.define('Pedido', {
         allowNull: false,
 
     }
-
 });
 
-
-Pedido.associate = (models) => {
-    Pedido.belongsTo(models.Cliente,
-      { foreignKey: 'cliente_id', as: 'cliente' });
-  };
+Pedido.belongsTo(Cliente, { foreignKey: 'cliente_id' });
 
 module.exports = Pedido;

@@ -10,12 +10,12 @@ exports.criarPedido = async (req, res) => {
     }
 };
 
-exports.todosClientes = async (req, res) => {
-    try {
-        const pedidos = await Pedido.findAll({ cliente_id });
-        res.status(200).json(pedidos);
-    } catch (error) {
-        res.status(500).json({ error: 'Erro ao buscar pedido'});
-    }
- };
+// exports.todosClientes = async (req, res) => {
+//     try {
+//         const pedidos = await Pedido.findAll({ cliente_id });
+//         res.status(200).json(pedidos);
+//     } catch (error) {
+//         res.status(500).json({ error: 'Erro ao buscar pedido'});
+//     }
+//  };
 
