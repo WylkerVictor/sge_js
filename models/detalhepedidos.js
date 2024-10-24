@@ -3,10 +3,11 @@ const sequelize = require('../config/database');
 const Pedido = require('./pedido');
 const Produto = require('./produto');
 
-const Detalhepedidos = sequelize.define('Pedido', {
+const Detalhepedidos = sequelize.define('Detalhepedidos', {
     detalhe_id: {
         type: DataTypes.INTEGER,
         autoIncrement: true,
+        primaryKey: true,
         allowNull: false,
     },
     detalhe_valor: {
@@ -17,9 +18,10 @@ const Detalhepedidos = sequelize.define('Pedido', {
         type: DataTypes.FLOAT,
         allowNull: false
         },
+        
 });
 
-Pedido.belongsTo(Pedido, { foreignKey: 'pedido_id' });
-Pedido.belongsTo(Produto, { foreignKey: 'produtos_id' });
+// Detalhepedidos.belongsTo(Pedido, { foreignKey: 'pedido_id' });
+// Detalhepedidos.belongsTo(Produto, { foreignKey: 'produto_id' });
 
 module.exports = Detalhepedidos;

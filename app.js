@@ -3,12 +3,16 @@ const bodyParser = require('body-parser');
 const clientRoutes = require('./Routes/clienteRoutes');
 const pedidoRoutes = require('./Routes/pedidoRoutes')
 const produtoRoutes = require('./Routes/produtoRoutes')
+const detalhepedidosRoutes = require('./Routes/detalhepedidosRoutes');
 const sequelize = require('./config/database');
 const Cliente = require('./models/cliente');
 const Pedido = require('./models/pedido');
 const Produto = require('./models/produto');
+const detalhepedidos = require('./models/detalhepedidos');
+require('./models/associations');
 
-const models = { Cliente, Pedido, Produto };
+
+const models = { Cliente, Pedido, Produto, detalhepedidos };
 Object.values(models).forEach(model => {
     if (model.associate) {
         model.associate(models);
@@ -20,6 +24,7 @@ app.use(bodyParser.json())
 app.use('/api', clientRoutes);
 app.use('/api', pedidoRoutes);
 app.use('/api', produtoRoutes);
+app.use('/api', detalhepedidosRoutes);
 
 const startServer = async () => {
     try {

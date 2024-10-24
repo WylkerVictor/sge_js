@@ -19,8 +19,8 @@ const Pedido = sequelize.define('Pedido', {
     }
 });
 
-Pedido.belongsTo(Cliente, { foreignKey: 'cliente_id' });
-Pedido.hasMany(Detalhepedidos, { foreignKey: 'pedido_id' });
+// Pedido.belongsTo(Cliente, { foreignKey: 'cliente_id' });
+// Pedido.hasMany(Detalhepedidos, { foreignKey: 'pedido_id' });
 
 
 module.exports = Pedido;

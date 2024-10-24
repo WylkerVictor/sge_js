@@ -1,9 +1,9 @@
 const Detalhepedidos = require('../models/detalhepedidos');
 
-exports.criarPedido = async (req, res) => {
+exports.criarDetalhes= async (req, res) => {
     try {
-        const { pedido_id, produto_id } = req.body;
-        const detalhepedidos = await Pedido.create({ pedido_id, produto_id });
+        const { pedido_id, produto_id, detalhe_valor, detalhe_desconto } = req.body;
+        const detalhepedidos = await Detalhepedidos.create({ pedido_id, produto_id, detalhe_valor, detalhe_desconto });
         res.status(201).json(detalhepedidos);
     } catch (error) {
         res.status(500).json({ error: 'Erro ao criar detalhes'});
