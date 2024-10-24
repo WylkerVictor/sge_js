@@ -1,7 +1,5 @@
 const { DataTypes } = require('sequelize');
 const sequelize = require('../config/database');
-const Cliente = require('./cliente');
-const Detalhepedidos = require('./detalhepedidos');
 
 const Pedido = sequelize.define('Pedido', {
     pedido_id: {
@@ -18,9 +16,5 @@ const Pedido = sequelize.define('Pedido', {
         allowNull: false,
     }
 });
-
-// Pedido.belongsTo(Cliente, { foreignKey: 'cliente_id' });
-// Pedido.hasMany(Detalhepedidos, { foreignKey: 'pedido_id' });
-
 
 module.exports = Pedido;

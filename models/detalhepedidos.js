@@ -1,7 +1,5 @@
 const { DataTypes } = require('sequelize');
 const sequelize = require('../config/database');
-const Pedido = require('./pedido');
-const Produto = require('./produto');
 
 const Detalhepedidos = sequelize.define('Detalhepedidos', {
     detalhe_id: {
@@ -20,8 +18,5 @@ const Detalhepedidos = sequelize.define('Detalhepedidos', {
         },
         
 });
-
-// Detalhepedidos.belongsTo(Pedido, { foreignKey: 'pedido_id' });
-// Detalhepedidos.belongsTo(Produto, { foreignKey: 'produto_id' });
 
 module.exports = Detalhepedidos;
