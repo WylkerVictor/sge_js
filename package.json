@@ -2,9 +2,6 @@
   "name": "projeto",
   "version": "1.0.0",
   "main": "index.js",
-  "engines": {
-    "node": "18"
-  },
   "scripts": {
     "test": "echo \"Error: no test specified\" && exit 1"
   },
@@ -15,9 +12,7 @@
   "dependencies": {
     "body-parser": "^1.20.3",
     "express": "^4.21.1",
-    "dotenv": "^16.4.5",
-    "pg": "^8.13.1",
-    "pg-hstore": "^2.3.4",
+    "mysql2": "^3.11.3",
     "sequelize": "^6.37.4"
   },
   "devDependencies": {
