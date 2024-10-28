@@ -6,7 +6,7 @@
     "node": "18"
   },
   "scripts": {
-    "start": "node server.js"
+    "start": "node app.js"
   },
   "keywords": [],
   "author": "",
