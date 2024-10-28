@@ -1,44 +1,19 @@
 const express = require('express');
 const bodyParser = require('body-parser');
-const clientRoutes = require('./routes/clienteRoutes');
-const pedidoRoutes = require('./routes/pedidoRoutes')
-const produtoRoutes = require('./routes/produtoRoutes')
-const detalhepedidosRoutes = require('./routes/detalhepedidosRoutes');
-const usuarioRoutes = require('./routes/usuarioRoutes');
 const sequelize = require('./config/database');
-const Cliente = require('./models/cliente');
-const Pedido = require('./models/pedido');
-const Produto = require('./models/produto');
-const detalhepedidos = require('./models/detalhepedidos');
-const Usuario = require('./models/usuario');
-require('./models/associations');
-
-
-const models = { Cliente, Pedido, Produto, detalhepedidos, Usuario };
-Object.values(models).forEach(model => {
-    if (model.associate) {
-        model.associate(models);
-    }
-});
+const routes = require('./routes');
 
 const app = express();
-app.use(bodyParser.json())
-app.use('/api', clientRoutes);
-app.use('/api', pedidoRoutes);
-app.use('/api', produtoRoutes);
-app.use('/api', detalhepedidosRoutes);
-app.use('/api', usuarioRoutes);
+app.use(bodyParser.json());
+app.use('/api', routes);
 
-const startServer = async () => {
-    try {
-        await sequelize.sync();
-        console.log('Banco de dados conectado.');
-        app.listen(3000, () => {
-            console.log('Servidor rodando na porta 3000');
-        });
-    } catch (error) {
-        console.error('Erro ao conectar no banco de dados:', error);
-    }
-};
-
-startServer();
+sequelize.sync()
+  .then(() => {
+    console.log('Conectado ao banco de dados');
+    app.listen(process.env.PORT || 3000, () => {
+      console.log(`Servidor rodando na porta ${process.env.PORT || 3000}`);
+    });
+  })
+  .catch(err => {
+    console.log('Erro ao conectar ao banco de dados', err);
+  });
