@@ -14,7 +14,6 @@ router.delete('/clientes/:cliente_id', clientController.excluirCliente);
 router.post('/detalhes', detalheController.criarDetalhes);
 router.get('/detalhes', detalheController.todosDetalhes);
 
-
 router.post('/pedidos', pedidoController.criarPedido);
 router.get('/pedidos', pedidoController.todosPedidos);
 
